@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache'
 
 
 export async function getDocuments() {
-    const response = await fetch(`http://localhost:5110/api/documents`, {cache: 'no-store'})
+    const response = await fetch(`http://backend:5110/api/documents`, {cache: 'no-store'})
     if (response.ok) {
         const body = await response.text()
         const data = JSON.parse(body) as { name: string, creation_date: string }[]
@@ -21,7 +21,7 @@ export async function getDocuments() {
 }
 
 export async function uploadFile(formData: FormData) {
-    const response = await fetch(`http://localhost:5110/api/documents`, {
+    const response = await fetch(`http://backend:5110/api/documents`, {
         method: 'POST',
         body: formData,
     })
@@ -37,7 +37,7 @@ export async function uploadFile(formData: FormData) {
 
 export async function deleteDocument(fileName: string) {
     console.log("Deleting documents")
-    const response = await fetch(`http://localhost:5110/api/documents/${fileName}`, {
+    const response = await fetch(`http://backend:5110/api/documents/${fileName}`, {
         method: 'DELETE',
     })
     if (response.ok) {
@@ -51,7 +51,7 @@ export async function deleteDocument(fileName: string) {
 }
 
 export async function resetSources() {
-    const response = await fetch(`http://localhost:5110/api/sources`, {
+    const response = await fetch(`http://backend:5110/api/sources`, {
         method: 'DELETE'
     })
     if (response.ok) {

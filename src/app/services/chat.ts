@@ -16,7 +16,7 @@ type PromptResponse = {
 }
 
 export async function promptRequest(request: PromptRequest) {
-    const response = await fetch("http://localhost:5110/api/prompt", {
+    const response = await fetch("http://backend:5110/api/prompt", {
         method: 'POST',
         body: JSON.stringify(request),
         keepalive: true,
