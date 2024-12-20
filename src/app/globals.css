@@ -2,20 +2,213 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.Mcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.chatContainer {
+  width: 100%;
+  max-width: 1000px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.chatBox {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #245ca7;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 20px;
+  font-size: 16px;
+  max-width: 85%;
+  margin-left: 48px;
+}
+
+.chatbot-message {
+  align-self: flex-start;
+  padding: 16px 24px;
+  border-radius: 20px;
+  margin-right: 48px;
+  color: #202124;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  max-width: 85%;
+  line-height: 1.6;
+}
+.chatbot-message h1 {
+  font-size: 1.5em;
+  margin: 0.5em 0;
+}
+
+.chatbot-message h2 {
+  font-size: 1.3em;
+  margin: 0.5em 0;
+}
+
+.chatbot-message ul, .chatbot-message ol {
+  margin-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.chatbot-message p {
+  margin-bottom: 0.5em;
+}
+
+.chatbot-message strong {
+  font-weight: bold;
+}
+
+.chatbot-message em {
+  font-style: italic;
+}
+
+.answer-container {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.chatbot-message.clickable {
+  flex: 1;
+  max-width: calc(50% - 8px);
+  cursor: pointer;
+  background-color: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 20px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.chatbot-message.clickable:hover {
+  background-color: #f1f3f4;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.inputContainer {
+  padding: 24px;
+  border-top: 1px solid #dadce0;
+  background-color: #ffffff;
+  border-radius: 0 0 28px 28px;
+  position: relative;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 16px 24px;
+  padding-right: 56px;
+  border: 1px solid #dadce0;
+  border-radius: 24px;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  color: #202124;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #245ca7;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+#sendButton {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #245ca7;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+#sendButton:hover {
+  background-color: #1557b0;
+}
+
+.instruction-text {
+  text-align: center;
+  color: #5f6368;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.thinking {
+  color: #5f6368;
+  font-style: italic;
+}
+
+.button-container {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.sourceButton {
+  background-color: transparent;
+  border: 1px solid #dadce0;
+  border-radius: 16px;
+  padding: 8px 16px;
+  color: #245ca7;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sourceButton:hover {
+  background-color: #f1f3f4;
+}
+
+.source-box {
+  position: absolute;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  padding: 16px;
+  max-width: 550px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1000;
 }

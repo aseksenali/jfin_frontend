@@ -1,0 +1,49 @@
+.message {
+  & h1 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+  }
+
+  & h2 {
+    font-size: 1.3em;
+    margin: 0.5em 0;
+  }
+
+  & h3 {
+    font-style: italic;
+    padding-bottom: .2em;
+    font-size: 1.1em;
+  }
+
+  & ul, & ol {
+    margin-left: 1.5em;
+    margin-bottom: 0.5em;
+    list-style-type: disc;
+
+    & li {
+      padding-bottom: 0.5em;
+    }
+  }
+
+  & p {
+    margin-bottom: 0.5em;
+  }
+
+  & strong {
+    font-weight: bold;
+  }
+
+  & em {
+    font-style: italic;
+  }
+
+  & table {
+    border-collapse: collapse;
+    border: 1px solid black;
+
+    & td, & th {
+      border: 1px solid black;
+      padding: 0.5rem;
+    }
+  }
+}
